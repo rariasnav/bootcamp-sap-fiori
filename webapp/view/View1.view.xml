@@ -3,11 +3,19 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
-            <Button 
-                id="buttonView1"
-                text="{i18n>Pressed}"
-                press="onPress"
-            />
+            <VBox id="pageVBox" class="sapUiSmallMargin">
+                <Input 
+                    id="nameInput"
+                    placeholder="{i18n>inputPlaceholder}" />
+                <Button
+                    id="buttonInput"
+                    text="{i18n>buttonText}"
+                    press=".onGreet"
+                    class="sapUiSmallMarginTop" />
+                <Text
+                    id="greetingText"
+                    class="sapUiSmallMarginTop" />
+            </VBox>
         </content>
     </Page>
 </mvc:View>

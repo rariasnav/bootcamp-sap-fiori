@@ -1,26 +1,20 @@
 sap.ui.define([
-    "sap/m/MessageToast",
     "sap/ui/core/mvc/Controller"
-], (MessageToast, Controller) => {
+], (Controller) => {
     "use strict";
 
     return Controller.extend("project1.controller.View1", {
         onInit() {
         },
-        onPress: function(oEvent) {
-            // var oBundle = this.getView().getModel("i18n").getResourceBundle();
-            
-            // var sMessage = oBundle.getText("popUpMessage");
+        onGreet: function() {
+            var oInput = this.getView().byId("nameInput");
+            var sName = oInput.getValue().trim();
 
-            var oView = oEvent.getSource().getParent();
+            var oBundle = this.getView().getModel("i18n").getResourceBundle();
 
-            var oBundle = oView.getModel("i18n").getResourceBundle();
+            var sGreeting = oBundle.getText("greetingText", [sName]);
 
-            var oButton = oEvent.getSource();
-
-            var sMessage = oBundle.getText("popUpMessage");
-
-            MessageToast.show(oButton.getId() + ":" + sMessage);
+            this.getView().byId("greetingText").setText(sGreeting);
         }
     });
 });
