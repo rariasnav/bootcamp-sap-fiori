@@ -1,10 +1,15 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "project1/utils/HomeHelper",
+], (Controller, HomeHelper) => {
     "use strict";
 
     return Controller.extend("project1.controller.View1", {
         onInit() {
+        },
+        onPressData: async function(){
+            let oDatos = await HomeHelper.getDataProducts(); 
+            await HomeHelper.setProductModel(this, oDatos[0].results); 
         },
         onGreet: function() {
             var oInput = this.getView().byId("nameInput");
@@ -15,6 +20,7 @@ sap.ui.define([
             var sGreeting = oBundle.getText("greetingText", [sName]);
 
             this.getView().byId("greetingText").setText(sGreeting);
-        }
+        },
+        
     });
 });

@@ -1,20 +1,52 @@
-<mvc:View controllerName="project1.controller.View1"
+<mvc:View
+    controllerName="project1.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
         <content>
-            <VBox id="pageVBox" class="sapUiSmallMargin">
-                <Input 
+            <VBox
+                id="pageVBox"
+                class="sapUiSmallMargin"
+            >
+                <Input
                     id="nameInput"
-                    placeholder="{i18n>inputPlaceholder}" />
+                    placeholder="{i18n>inputPlaceholder}"
+                />
                 <Button
                     id="buttonInput"
                     text="{i18n>buttonText}"
                     press=".onGreet"
-                    class="sapUiSmallMarginTop" />
+                    class="sapUiSmallMarginTop"
+                />
                 <Text
                     id="greetingText"
-                    class="sapUiSmallMarginTop" />
+                    class="sapUiSmallMarginTop"
+                />
+            </VBox>
+            <VBox
+                id="pageVBox1"
+                class="sapUiSmallMargin"
+            >
+                <Button
+                    id="getDataButton"
+                    text="{i18n>getDataButon}"
+                    press="onPressData"
+                    class="sapUiSmallMarginTop"
+                />
+            </VBox>
+            <VBox
+                id="vbId01"
+                class="sapUiSmallMargin"
+            >
+                <c:Fragment
+                    fragmentName="project1.view.fragments.ProductsTable"
+                    type="XML"
+                />
             </VBox>
         </content>
     </Page>
