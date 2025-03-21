@@ -1,43 +1,86 @@
 <c:FragmentDefinition
     xmlns="sap.m"
-    xmlns:c="sap.ui.core">
-    <Table 
-        id="idProductTable"
-        inset="false"
-        items="{ 
-            path: 'ProductCollection>/'
-        }">
+    xmlns:c="sap.ui.core"
+>
+    <Table
+        id="idProductsTable"
+        items="{
+            path: '/Products'
+        }"
+    >
         <columns>
             <Column id="ID_01">
-                <Text id="tID_01" text="{i18n>Product}" />
+                <Text
+                    id="ID_T01"
+                    text="{i18n>Product}"
+                />
             </Column>
             <Column id="ID_02">
-                <Text id="tID_02" text="{i18n>UnitPrice}" />
+                <Text
+                    id="ID_T05"
+                    text="{i18n>UnitPrice}"
+                />
+            </Column>
+            <Column id="ID_05">
+                <Text
+                    id="ID_T04"
+                    text="{i18n>UnitsInStock}"
+                />
             </Column>
             <Column id="ID_03">
-                <Text id="tID_03" text="{i18n>UnitsInStock}" />
+                <Text
+                    id="ID_T02"
+                    text="{i18n>QuantityPerUnit}"
+                />
             </Column>
-            <Column id="ID_04">
-                <Text id="tID_04" text="{i18n>QuantityPerUnit}" />
+            <Column>
+                <Text text="{i18n>CategoryID}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>SupplierID}" />
             </Column>
         </columns>
         <items>
-            <ColumnListItem id="ID_06" vAlign="Middle">
+            <ColumnListItem
+                id="ID_06"
+                vAlign="Middle"
+                type="Active"
+                press="onItemPress"
+            >
                 <cells>
-                    <ObjectIdentifier id="ID_07"
-                    title="{ProductCollection>ProductID}"
-                    text="{ProductCollection>ProductName}"/>
-                    <ObjectNumber id="ID_10"
-                    number="{
-                        parts: [{path:'ProductCollection>UnitPrice'},{path:''}],
-                        type: 'sap.ui.model.type.Currency',
-                        formatOptions: {showMeasure: true}
-                    }"
-                    unit="USD" />
-                    <Text id="ID_08"
-                        text="{ProductCollection>UnitsInStock}"/>
-                    <Text id="ID_09"
-                        text="{ProductCollection>QuantityPerUnit}"/>
+                    <ObjectIdentifier
+                        id="ID_07"
+                        title="{ProductID}"
+                        text="{ProductName}"
+                    />
+                    <ObjectNumber
+                        id="ID_11"
+                        number="{
+                            parts:[{path:'UnitPrice'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: true}
+                        }"
+                        emphasized="false"
+                        state="{ path:'UnitPrice', formatter: '.formatter.getStateUnit' }"
+                        unit="USD"
+                    />
+                    <ObjectNumber
+                        id="ID_09"
+                        number="{
+                            parts:[{path:'UnitsInStock'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: true}
+                        }"
+                        emphasized="false"
+                        state="{= ${UnitsInStock} >= 50 ? 'Error' : ${UnitsInStock} >= 10 ? 'Warning': 'Success'}"
+                    />
+
+                    <Text
+                        id="ID_08"
+                        text="{QuantityPerUnit}"
+                    />
+                    <Text text="{CategoryID}" />
+                    <Text text="{SupplierID}" />
                 </cells>
             </ColumnListItem>
         </items>

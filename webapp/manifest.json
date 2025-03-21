@@ -44,7 +44,7 @@
         }
     },
     "sap.ui5": {
-        "flexEnabled": true,
+        "flexEnabled": false,
         "dependencies": {
             "minUI5Version": "1.133.0",
             "libs": {
@@ -95,12 +95,25 @@
                     "target": [
                         "TargetView1"
                     ]
+                },
+                {
+                    "name": "detail",
+                    "pattern": "detail/{ProductID}",
+                    "target": [
+                        "detail"
+                    ]
                 }
             ],
             "targets": {
                 "TargetView1": {
                     "id": "View1",
                     "name": "View1"
+                },
+                "detail": {
+                    "viewName": "Detail",
+                    "viewType": "XML",
+                    "viewId": "detail",
+                    "viewLevel": 2
                 }
             }
         },
